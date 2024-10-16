@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page title</title>
+    
+    <style>
+        
+        body, html{
+            margin:0;
+            padding:0;
+            font-family:Arial;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        .header{
+            position:relative;
+            height:100vh;
+            opacity:0;
+            transform:translateY(200px) scale(0.3);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+        
+        .header img{
+            width:100%;
+            height:100%;
+            object-fit: cover;
+            position:absolute;
+            top:0;
+            left: 0;
+            z-index:1;
+        }
+        
+        .header::after{
+            content:'';
+            position:absolue;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background-color: rgba(0,0,0,0.4);
+            z-index:2;
+        }
+        
+        .header h1{
+            position:relative;
+            top:600px;
+            z-index:3;
+            color:white;
+            text-align: center;
+            font-size: 3em;
+            display:flex;
+            justify-content: center;
+            height:100%;
+            margin:0;
+            padding:20px;
+        }
+        
+        .content{
+            background-color: #f4f4f4;
+            padding:50px;
+            text-align: center;
+        }
+        
+        .content h1{
+            font-size: 2.5em;
+            text-align: center;
+        }
+        
+        .content p{
+            font-size: 1.2em;
+            max-width: 800px;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        
+        <div class="bagian">
+            <div class="header">
+                <img src="media/gunung.jpg" alt="Pegunungan">
+                <h1>Pegunungan Yang Menakjubkan</h1>
+            </div>
+            
+            <div class="content">
+                <h1>Mulai Perjalanan</h1>
+                <p>Pegunungan merupakan pemandangan yang indah yang harus dikunjungi setidaknya sekali seumur hidup.</p>
+            </div>
+        </div>
+        
+        <div class="bagian">
+            <div class="header">
+                <img src="media/hutan.jpg" alt="Hutan">
+                <h1>Pepohonan Yang Asri</h1>
+            </div>
+            
+            <div class="content">
+                <h1>Sejuk, Hijau, Menenangkan</h1>
+                <p>Pepohonan merupakan salah satu ciptaan alam yang mempunyai banyak manfaat dan berkah.</p>
+            </div>
+        </div>
+        
+        <div class="bagian">
+            <div class="header">
+                <img src="media/sungai.jpg" alt="">
+                <h1>Santai Santuy</h1>
+            </div>
+            
+            <div class="content">
+                <h1>Air bening yang mengalir sampai ujung.</h1>
+                <p>Aliran air yang menyejukkan hati.</p>
+            </div>
+        </div>
+        
+    </div>
+    
+        <script>
+        document.querySelectorAll('.header').forEach(header => {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0) scale(1)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            observer.observe(header);
+        });
+    </script>
+</body>
+</html>
